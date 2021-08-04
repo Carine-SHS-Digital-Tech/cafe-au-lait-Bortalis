@@ -9,7 +9,6 @@ while end == 0:
     valid = 1
     # and also this is the start of the program
     choice = input("\n\n______________________________________\nSo what do you want to do? \n1:New order   2:Daily summery    3:No\n\n")
-
     # this is here for when we take a new order
     if choice.upper() == "NEW ORDER":
         if valid == 1:
@@ -26,7 +25,6 @@ while end == 0:
             else:
                 go = 1
                 valid = 0
-
         if valid == 1:
             while go == 1:
                 if valid == 1:
@@ -35,38 +33,23 @@ while end == 0:
                     if num.isnumeric() is True:
                         num = float(num)
                         num = int(round(num, 0))
-                        if num < 0:
-                            valid = 0
+                        if num < 0:valid = 0
                         if valid == 1:
-                            if typeoh.upper() == "CAPPUCCINO":
-                                types["Cappuccino"] += num
-                            elif typeoh.upper() == "ESPRESSO":
-                                types["Espresso"] += num
-                            elif typeoh.upper() == "LATTE":
-                                types["Latte"] += num
-                            elif typeoh.upper() == "ICED COFFEE":
-                                types["Iced Coffee"] += num
-                            else:
-                                valid = 0
-                    else:
-                        valid = 0
+                            if typeoh.upper() == "CAPPUCCINO":types["Cappuccino"] += num
+                            elif typeoh.upper() == "ESPRESSO":types["Espresso"] += num
+                            elif typeoh.upper() == "LATTE":types["Latte"] += num
+                            elif typeoh.upper() == "ICED COFFEE":types["Iced Coffee"] += num
+                            else:valid = 0
+                    else:valid = 0
                     if valid == 1:
                         answer = input("\nAnything else?\n 1:Yes   2:No\n\n")
-                        if answer.upper() == "YES":
-                            go = 1
-                        else:
-                            go = 0
-                    else:
-                        go = 0
-                else:
-                    go = 0
-
+                        if answer.upper() == "YES":go = 1
+                        else:go = 0
+                    else:go = 0
+                else:go = 0
             if valid == 1:
-                for a in types:
-                    total += types[a]*coffees[a]
-
-                if charge == 1:
-                    total = total*1.05
+                for a in types:total += types[a]*coffees[a]
+                if charge == 1:total = total*1.05
                 gst = total*.1
                 print(" ")
                 for a in lis:
@@ -75,7 +58,6 @@ while end == 0:
                 print(f"Gst cost: ${gst:.2f}")
                 print(f"Final cost: ${(gst+total):.2f}")
                 pay = input("\nPlease provide your payment in exact.\n\n")
-
                 if pay == f"{(gst+total):.2f}":
                     print("\nThank you for your order")
                     for a in types:
@@ -87,8 +69,7 @@ while end == 0:
                 else:
                     print("\nPayment not correct, please restart order")
                     valid = 0
-        if valid == 0:
-            print("\nINCORRECT VALUE(S). PLEASE RESTART ORDER.")
+        if valid == 0:print("\nINCORRECT VALUE(S). PLEASE RESTART ORDER.")
     elif choice.upper() == "DAILY SUMMERY":
         for a in total_summery:
             print(f"{a}:{total_summery[a]}")
@@ -96,8 +77,5 @@ while end == 0:
         print("\nOh, ok...")
         end = 1
         nice = 1
-    else:
-        print("\nINVALID INPUT")
-if nice == 1:
-    print("Thank you for your participation!")
-
+    else:print("\nINVALID INPUT")
+if nice == 1:print("Thank you for your participation!")
