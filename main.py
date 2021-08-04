@@ -1,16 +1,16 @@
 # starting variables
 valid = 1
-total = dine = take = charge = go = nice = 0
+total = dine = take = charge = go = nice = end = 0
 coffees = {"Cappuccino": 3, "Espresso": 2.25, "Latte": 2.5, "Iced Coffee": 2.5}
 lis = ["Cappuccino", "Espresso", "Latte", "Iced Coffee"]
 types = {"Cappuccino": 0, "Espresso": 0, "Latte": 0, "Iced Coffee": 0}
 total_summery = {"Cappuccino": 0, "Espresso": 0, "Latte": 0, "Iced Coffee": 0, "GST": 0, "Profit": 0, "Cups": 0, "Orders": 0}
-while valid == 1:
+while end == 0:
+    valid = 1
     # and also this is the start of the program
-    choice = input("\n\nSo what do you want to do? \n1:New order   2:Daily summery    3:No\n\n")
+    choice = input("\n\n______________________________________\nSo what do you want to do? \n1:New order   2:Daily summery    3:No\n\n")
 
     # this is here for when we take a new order
-
     if choice.upper() == "NEW ORDER":
         if valid == 1:
             types = {"Cappuccino": 0, "Espresso": 0, "Latte": 0, "Iced Coffee": 0}
@@ -87,18 +87,17 @@ while valid == 1:
                 else:
                     print("\nPayment not correct, please restart order")
                     valid = 0
-        # if valid == 0:
-            # print("INCORRECT VALUE. PLEASE RESTART ORDER.")
+        if valid == 0:
+            print("\nINCORRECT VALUE(S). PLEASE RESTART ORDER.")
     elif choice.upper() == "DAILY SUMMERY":
         for a in total_summery:
             print(f"{a}:{total_summery[a]}")
     elif choice.upper() == "NO":
         print("\nOh, ok...")
-        valid = 0
+        end = 1
         nice = 1
     else:
-        valid = 0
+        print("\nINVALID INPUT")
 if nice == 1:
     print("Thank you for your participation!")
-elif valid == 0:
-    print("\nINVALID ANSWER, PLEASE RESTART ACTIONS.")
+
