@@ -11,26 +11,25 @@ while end == 0:
     choice = input("\n\n______________________________________\nSo what do you want to do? \n1:New order   2:Daily summery    3:No\n\n")
 
     # this is here for when we take a new order
-    if choice.upper() == "NEW ORDER":
+    if choice.upper() in ["NEW ORDER", "1"]:
         if valid == 1:
             types = {"Cappuccino": 0, "Espresso": 0, "Latte": 0, "Iced Coffee": 0}
             dot = input("\n1:Dine in   2:Take away\n\n")
-            if dot.upper() == "DINE IN":
+            if dot.upper() in ["DINE IN", "1"]:
                 charge = 0
                 dine += 1
                 go = 1
-            elif dot.upper() == "TAKE AWAY":
+            elif dot.upper() in ["TAKE AWAY", "2"]:
                 charge = 1
                 take += 1
                 go = 1
             else:
                 go = 1
                 valid = 0
-
         if valid == 1:
             while go == 1:
                 if valid == 1:
-                    typeoh = input("\nWhat drink do you want?\n1:Cappuccino $3.00\n2:Espresso $2.25\n3:Latte $2.50\n4:Iced Coffee $2.50\n\n")
+                    choice = input("\nWhat drink do you want?\n1:Cappuccino $3.00\n2:Espresso $2.25\n3:Latte $2.50\n4:Iced Coffee $2.50\n\n")
                     num = input("\nWhat quantity do you want of this drink?\n\n")
                     if num.isnumeric() is True:
                         num = float(num)
@@ -38,13 +37,13 @@ while end == 0:
                         if num < 0:
                             valid = 0
                         if valid == 1:
-                            if typeoh.upper() == "CAPPUCCINO":
+                            if choice.upper() in ["CAPPUCCINO", "1"]:
                                 types["Cappuccino"] += num
-                            elif typeoh.upper() == "ESPRESSO":
+                            elif choice.upper() in ["ESPRESSO", "2"]:
                                 types["Espresso"] += num
-                            elif typeoh.upper() == "LATTE":
+                            elif choice.upper() in ["LATTE", "3"]:
                                 types["Latte"] += num
-                            elif typeoh.upper() == "ICED COFFEE":
+                            elif choice.upper() in ["ICED COFFEE", "4"]:
                                 types["Iced Coffee"] += num
                             else:
                                 valid = 0
@@ -52,7 +51,7 @@ while end == 0:
                         valid = 0
                     if valid == 1:
                         answer = input("\nAnything else?\n 1:Yes   2:No\n\n")
-                        if answer.upper() == "YES":
+                        if answer.upper() in ["YES", "1"]:
                             go = 1
                         else:
                             go = 0
@@ -89,10 +88,10 @@ while end == 0:
                     valid = 0
         if valid == 0:
             print("\nINCORRECT VALUE(S). PLEASE RESTART ORDER.")
-    elif choice.upper() == "DAILY SUMMERY":
+    elif choice.upper() in ["DAILY SUMMERY", "2"]:
         for a in total_summery:
             print(f"{a}:{total_summery[a]}")
-    elif choice.upper() == "NO":
+    elif choice.upper() in ["NO", "3"]:
         print("\nOh, ok...")
         end = 1
         nice = 1
@@ -100,4 +99,3 @@ while end == 0:
         print("\nINVALID INPUT")
 if nice == 1:
     print("Thank you for your participation!")
-
