@@ -8,7 +8,6 @@ lis = ["Cappuccino", "Espresso", "Latte", "Iced Coffee"]
 types = {"Cappuccino": 0, "Espresso": 0, "Latte": 0, "Iced Coffee": 0}
 # summery storage
 total_summery = {"Dine": 0, "Take": 0, "Cappuccino": 0, "Espresso": 0, "Latte": 0, "Iced Coffee": 0, "GST": 0, "Profit": 0, "Cups": 0, "Orders": 0}
-
 # start and ending loop
 while end == 0:
     # start valid value to "correct at the moment"
@@ -87,7 +86,7 @@ while end == 0:
                     total_summery[a] += types[a]
                     total_summery["Cups"] += types[a]
                 total_summery["GST"] += int(round(gst, 0))
-                total_summery["Profit"] += total
+                total_summery["Profit"] += int(pay) - gst
                 total_summery["Orders"] += 1
             else:
                 print("\nPayment not correct, please restart order")
