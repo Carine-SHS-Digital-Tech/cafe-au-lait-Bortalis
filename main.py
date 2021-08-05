@@ -1,6 +1,5 @@
 # setting starting variables
-valid = 1
-total = charge = go = nice = end = 0
+total = charge = go = end = 0
 # prices
 coffees = {"Cappuccino": 3, "Espresso": 2.25, "Latte": 2.5, "Iced Coffee": 2.5}
 # print and input helper
@@ -33,6 +32,7 @@ while end == 0:
                 go = 1
             else:
                 valid = 0
+        # loop of the ordering of the actual items
         while go == 1:
             if valid == 1:
                 choice = input("\nWhat drink do you want?\n1:Cappuccino $3.00\n2:Espresso $2.25\n3:Latte $2.50\n4:Iced Coffee $2.50\n\n")
@@ -55,6 +55,7 @@ while end == 0:
                             valid = 0
                 else:
                     valid = 0
+                # asking if they want to spend more
                 if valid == 1:
                     answer = input("\nAnything else?\n 1:Yes   2:No\n\n")
                     if answer.upper() in ["YES", "1"]:
@@ -66,12 +67,14 @@ while end == 0:
             else:
                 go = 0
         if valid == 1:
+            # finally working out the final price or the order
             for a in types:
                 total += types[a]*coffees[a]
             if charge == 1:
                 total = total*1.05
             gst = total*.1
             print(" ")
+            # printing receipt
             for a in lis:
                 print(f"{a}s:{types[a]}")
             print(f"\nInitial cost: ${total:.2f}")
@@ -89,16 +92,17 @@ while end == 0:
             else:
                 print("\nPayment not correct, please restart order")
                 valid = 0
+        # failed validation statement
         if valid == 0:
             print("\nINCORRECT VALUE(S). PLEASE RESTART ORDER.")
+    # simple summery
     elif choice.upper() in ["DAILY SUMMERY", "2"]:
         for a in total_summery:
             print(f"{a}:{total_summery[a]}")
+    # code end condition
     elif choice.upper() in ["NO", "3"]:
         print("\nOh, ok...")
         end = 1
-        nice = 1
     else:
         print("\nINVALID INPUT")
-if nice == 1:
-    print("Thank you for your participation!")
+print("Thank you for your participation!")
