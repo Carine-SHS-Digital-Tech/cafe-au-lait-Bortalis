@@ -4,6 +4,7 @@ total = charge = go = end = 0
 coffees = {"Cappuccino": 3, "Espresso": 2.25, "Latte": 2.5, "Iced Coffee": 2.5}
 # print and input helper
 lis = ["Cappuccino", "Espresso", "Latte", "Iced Coffee"]
+lis2 = ["GST", "Profit", "Cups", "Orders"]
 # order storage
 types = {"Cappuccino": 0, "Espresso": 0, "Latte": 0, "Iced Coffee": 0}
 # summery storage
@@ -86,7 +87,7 @@ while end == 0:
                     total_summery[a] += types[a]
                     total_summery["Cups"] += types[a]
                 total_summery["GST"] += int(round(gst, 0))
-                total_summery["Profit"] += int(pay) - gst
+                total_summery["Profit"] += int(pay) - int(gst)
                 total_summery["Orders"] += 1
             else:
                 print("\nPayment not correct, please restart order")
@@ -96,8 +97,10 @@ while end == 0:
             print("\nINCORRECT VALUE(S). PLEASE RESTART ORDER.")
     # simple summery
     elif choice.upper() in ["DAILY SUMMERY", "2"]:
-        for a in total_summery:
+        for a in lis:
             print(f"{a}:{total_summery[a]}")
+        for a in lis2:
+            print(f"{a}:{total_summery[a]:.2f}")
     # code end condition
     elif choice.upper() in ["NO", "3"]:
         print("\nOh, ok...")
