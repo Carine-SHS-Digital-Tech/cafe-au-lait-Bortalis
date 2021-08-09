@@ -81,14 +81,17 @@ while end == 0:
             print(f"Gst cost: ${gst:.2f}")
             print(f"Final cost: ${(gst+total):.2f}")
             pay = input("\nPlease provide your payment in EXACT. Or larger if you feel like tipping.\n\n")
-            if pay >= f"{(gst+total):.2f}":
+            if float(pay) >= (gst+total):
                 print("\nThank you for your order")
+                # receipt
                 for a in types:
                     total_summery[a] += types[a]
                     total_summery["Cups"] += types[a]
-                total_summery["GST"] += int(round(gst, 0))
-                total_summery["Profit"] += int(pay) - int(gst)
+                total_summery["GST"] += gst
+                total_summery["Profit"] += float(pay) - gst
                 total_summery["Orders"] += 1
+            elif float(pay) < (gst +total):
+                print("Not enough funds, please enter more.")
             else:
                 print("\nPayment not correct, please restart order")
                 valid = 0
@@ -108,4 +111,3 @@ while end == 0:
     else:
         print("\nINVALID INPUT")
 print("Thank you for your participation!")
-
